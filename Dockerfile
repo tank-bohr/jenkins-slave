@@ -1,9 +1,11 @@
 FROM centos:latest
 MAINTAINER Alexey Niktin <niktin@corp.sputnik.ru>
 
-RUN yum install -y openssh-server java-1.7.0-openjdk subversion git boost icu
+RUN yum install -y openssh-server java-1.7.0-openjdk subversion git boost icu wget vim
 # Adds user jenkins with password jenkins
 RUN useradd --password `openssl passwd -crypt jenkins` jenkins
+
+RUN chkconfig sshd on
 
 EXPOSE 22
 
