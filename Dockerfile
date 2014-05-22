@@ -7,4 +7,4 @@ RUN useradd --password `openssl passwd -crypt jenkins` jenkins
 
 EXPOSE 22
 
-CMD ["/etc/init.d/sshd", "start"]
+CMD ["service", "sshd", "start"]

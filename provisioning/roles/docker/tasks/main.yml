@@ -1,0 +1,17 @@
+---
+-
+  name: kernel
+  command: uname -r
+  register: kernel_version
+
+- apt: pkg=linux-image-extra-{{kernel_version.stdout}} update_cache=yes
+- apt_key: keyserver=hkp://keyserver.ubuntu.com:80 id=D8576A8BA88D21E9
+- apt_repository: repo='deb http://get.docker.io/ubuntu docker main' state=present
+- apt: pkg=lxc-docker update_cache=yes
+
+- name: tune docker
+  lineinfile:
+    dest=/etc/default/docker
+    line='DOCKER_OPTS="-H tcp://0.0.0.0:4243 -H unix:///var/run/docker.sock"'
+    state=present
+    backup=yes

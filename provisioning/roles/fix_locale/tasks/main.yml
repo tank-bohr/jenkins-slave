@@ -1,0 +1,11 @@
+---
+# - locale_gen: name=en_US.UTF-8 state=present
+# - command: locale-gen 
+# - command: dpkg-reconfigure locales
+-
+  name: set locale
+  lineinfile:
+    dest=/etc/environment
+    line='LC_ALL="en_US.UTF-8"'
+    state=present
+    backup=yes
