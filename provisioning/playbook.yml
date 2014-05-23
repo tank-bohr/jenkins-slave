@@ -5,5 +5,5 @@
     # - aptgetable
     - fix_locale
     - oh-my-zsh
-    - jenkins
+    # - jenkins
     - docker

@@ -3,5 +3,5 @@ upgrade_packages: False
 user: '{{ ansible_env.SUDO_USER }}'
 
 oh_my_zsh:
-  theme: simple
-  plugins: git lol
+  theme: gentoo
+  plugins: git lol docker
